@@ -6,9 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - NODE_ENV=development
-    command: [ "npm", "run", "dev" ]
+    command: [ "python", "src/main.py" ]
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - .:/app

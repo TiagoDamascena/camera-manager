@@ -1,15 +1,8 @@
-FROM node:12-alpine
+FROM python:3.9
 
-RUN apk update
-RUN apk add --no-cache make g++ pkgconfig python3 libexecinfo libexecinfo-dev libgphoto2 libgphoto2-dev
+RUN pip install gphoto2 --user --only-binary :all:
 
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install
+WORKDIR /app
 COPY . .
 
-ENV NODE_PATH=./build
-
-RUN npm run build
-
-CMD [ "node", "run", "dev" ]
+CMD ["python", "src/main.py"]

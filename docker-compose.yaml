@@ -2,10 +2,11 @@ version: "3.8"
 
 services:
   camera-manager:
+    platform: linux/x86_64
     container_name: camera-manager
     build:
       context: .
       dockerfile: Dockerfile
-    command: [ "python", "src/main.py" ]
+    command: ["python", "src/main.py"]
     volumes:
       - .:/app
